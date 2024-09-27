@@ -10,7 +10,12 @@ class Restaurant{
         $this->menu = $menu;
         $this->employees = $employees;
     }
-    public function order(): array{
+    public function getMenu()
+    {
         return $this->menu;
+    }
+    public function getEmployees()
+    {
+        return $this->employees;
     }
 }
