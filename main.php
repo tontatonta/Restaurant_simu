@@ -1,10 +1,14 @@
 <?php
-$variable1 = "Hello";
-$variable2 = 10;
+spl_autoload_register(".php");
+spl_autoload_register(function($class){
+    $base_dir = __DIR__ . '/src/';
+    $file = $base_dir . str_replace('\\', '/', $class) . '.php';
+    if (file_exists($file)) {
+        require $file;
+    }
+});
 
-echo $variable1; // Prints: Hello
-echo $variable2; // Prints: 10
-
-echo isset($variable1); // trueの場合、1と表示
-echo isset($variable1); // falseの場合、何も表示しない
-echo isset($variable3) === true ? 'variable3 exists' : 'variable3 does not exist';
+$cheeseBurger = new FoodItem\CheeseBurger();
+$fettuccine = new FoodItem\Fettuccine();
+$HawaiianPizza = new FoodItem\HawaiianPizza();
+$Spaghetti = new FoodItem\Spaghetti();
