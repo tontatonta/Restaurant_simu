@@ -13,8 +13,12 @@ class Cashers extends Employees
     public function generateOrder(Restaurants $restaurant, array $foodOrderMap, array $foodnameMenu): double{
         $employees = $restaurant->getEmployees();
         $total = 0.0;
-        foreach($foodOrderMap as $food => $quantity){
-            $total += $foodnameMenu[$food] * $quantity;
+        
+        for($i = 0; $i < count($employees); $i++){
+            if($employees[$i]->getName() == "Person\Employees\Chefs"){
+                $chef = $employees[$i];
+                $total = $employees[$i]->prepareFood($restaurant, $foodOrderMap, $foodnameMenu);
+            }
         }
         return $total;
     }
