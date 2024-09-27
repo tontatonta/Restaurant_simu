@@ -8,7 +8,7 @@ class CheeseBurger extends FoodItem{
             'CheeseBurger', # name
             'A cheeseburger is a hamburger topped with cheese.', # description
             10.0, # price
-            2  # category
+            2  # cookTime
         );
     }
 }
