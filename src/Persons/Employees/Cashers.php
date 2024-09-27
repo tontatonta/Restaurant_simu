@@ -5,25 +5,26 @@ use Restaurants\Restaurants;
 class Cashers extends Employees
 {
 
-    public function __construct( string $name, int $age, string $address, int $employeeId, double $salary)
+    public function __construct( string $name, int $age, string $address, int $employeeId, float $salary)
     {
         parent::__construct($name, $age, $address, $employeeId, $salary);
     }
 
-    public function generateOrder(Restaurants $restaurant, array $foodOrderMap, array $foodnameMenu): double{
+    public function generateOrder(Restaurants $restaurant, array $foodOrderMap, array $foodNameMenu): float{
+
         $employees = $restaurant->getEmployees();
         $total = 0.0;
-        
+
         for($i = 0; $i < count($employees); $i++){
-            if($employees[$i]->getName() == "Person\Employees\Chefs"){
+            if(get_class($employees[$i]) == "Persons\Employees\Chefs"){
                 $chef = $employees[$i];
-                $total = $employees[$i]->prepareFood($restaurant, $foodOrderMap, $foodnameMenu);
+                $total = $chef->prepareFood($restaurant, $foodOrderMap, $foodNameMenu);
             }
         }
         return $total;
     }
 
     public function generateInvoice(){
-        echo $this->getName() . ' made the invoice\n';
+        echo $this->getName() . ' made the invoice' . "\n";
     }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace Persons;
 
-abstract class Person
+abstract class Persons
 {
     protected $name;
     protected $age;
@@ -13,4 +13,20 @@ abstract class Person
         $this->age = $age;
         $this->address = $address;
     }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    public function getAddress()
+    {
+        return $this->address;
+    }
+    
 }

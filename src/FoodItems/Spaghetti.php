@@ -8,7 +8,7 @@ class Spaghetti extends FoodItem{
             'Spaghetti', # name
             'Spaghetti is a long, thin, solid, cylindrical pasta.', # description
             25.0, # price
-            4  # category
+            4  # cookTime
         );
     }
 }

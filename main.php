@@ -1,20 +1,20 @@
 <?php
-spl_autoload_register(".php");
-spl_autoload_register(function($class){
-    $base_dir = __DIR__ . '/src/';
-    $file = $base_dir . str_replace('\\', '/', $class) . '.php';
-    if (file_exists($file)) {
+spl_autoload_extensions(".php");
+spl_autoload_register(function ($class){
+    $base_dir = __DIR__. '/src/';
+    $file = $base_dir.str_replace('\\', '/', $class).'.php';
+    if(file_exists(($file))){
         require $file;
     }
 });
 
-$cheeseBurger = new FoodItem\CheeseBurger();
-$fettuccine = new FoodItem\Fettuccine();
-$HawaiianPizza = new FoodItem\HawaiianPizza();
-$Spaghetti = new FoodItem\Spaghetti();
+$cheeseBurger = new FoodItems\CheeseBurger();
+$fettuccine = new FoodItems\Fettuccine();
+$HawaiianPizza = new FoodItems\HawaiianPizza();
+$Spaghetti = new FoodItems\Spaghetti();
 
-$Ken = new Persons\Employees\Chef("Ken Suzuki", 40, "Hokkaido", 1, 30);
-$Saki = new Persons\Employees\Chef("Saki Tanaka", 35, "Tokyo", 2, 25);
+$Ken = new Persons\Employees\Chefs("Ken Suzuki", 40, "Hokkaido", 1, 30);
+$Saki = new Persons\Employees\Cashers("Saki Tanaka", 35, "Tokyo", 2, 25);
 
 $saizeriya = new Restaurants\Restaurants(
     [
@@ -30,12 +30,11 @@ $saizeriya = new Restaurants\Restaurants(
 );
 
 $interestedTastedMap = [
-    "CheeseBurger" => 2,
+    "CheeseBurger" => 1,
     "Fettuccine" => 1,
-    "HawaiianPizza" => 3,
-    "Spaghetti" => 2
+    "HawaiianPizza" => 1
 ];
-$Tom = new Persons\Customers\Customers("Taro Yamada", 25, "Tokyo", $interestedTastedMap);
+$Taro = new Persons\Customers\Customers("Taro Yamada", 25, "Tokyo", $interestedTastedMap);
 
-$invoice = $Tom->orderFood($saizeriya);
-$invoice->printInvoice();
+$invoice = $Taro->order($saizeriya);
+$invoice->generateInvoice();
