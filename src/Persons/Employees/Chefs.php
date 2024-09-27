@@ -10,8 +10,25 @@ class Chefs extends Employees
         parent::__construct($name, $age, $address, $employeeId, $salary);
     }
 
-    public function preparefood(Restaurants $restaurant)
+    public function preparefood(Restaurants $restaurant, array $foodOrderMap, array $foodNameMenu): double
     {
-        return $this->name . ' is preparing food for ' . $restaurant->getName();
+        $name = $this->getName();
+        $time = 0;
+        $menu = $restaurant->getMenu();
+        $total = 0.0;
+
+        foreach ($foodOrderMap as $foodName => $quantity) {
+            $index = array_search($foodName, $foodNameMenu);
+
+            if ($index !== false) {
+                for ($i = 0; $i < $quantity; $i++) {
+                    $total += $menu[$index]->getPrice();
+                    $time += $menu[$index]->getCookTime();
+                    echo $name."was cooking".$foodName."\n";
+                }
+            }
+        }
+        echo $name."took".$time."minutes to cook.\n";
+        return $total;
     }
 }
