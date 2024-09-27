@@ -8,7 +8,7 @@ class Fettuccine extends FoodItem{
             'Fettuccine', # name
             'Fettuccine is a type of pasta popular in Roman and Tuscan cuisine.', # description
             23.0, # price
-            1  # category
+            1  # cookTime
         );
     }
 }

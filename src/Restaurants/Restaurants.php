@@ -1,11 +1,11 @@
 <?php
 namespace Restaurants;
 
-class Restaurant{
+class Restaurants{
     public $menu = [];
     public $employees = [];
 
-    public function __construct($menu, $employees)
+    public function __construct(array $menu, array $employees)
     {
         $this->menu = $menu;
         $this->employees = $employees;

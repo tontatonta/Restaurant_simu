@@ -6,14 +6,14 @@ abstract class FoodItem
     protected $name;
     protected $description;
     protected $price;
-    protected $category;
+    protected $cookTime;
 
-    public function __construct($name, $description, $price, $category)
+    public function __construct($name, $description, $price, $cookTime)
     {
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
-        $this->category = $category;
+        $this->cookTime = $cookTime;
     }
 
     public function getName()
@@ -31,8 +31,8 @@ abstract class FoodItem
         return $this->price;
     }
 
-    public function getCategory()
+    public function getCookTime()
     {
-        return $this->category;
+        return $this->cookTime;
     }
 }

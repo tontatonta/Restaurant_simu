@@ -2,15 +2,15 @@
 namespace Invoices;
 
 class Invoices{
-    protected double $total;
+    protected float $total;
     protected string $orderTime;
 
-    public function __construct(double $total, string $orderTime){
+    public function __construct(float $total){
         $this->total = $total;
         $this->orderTime = date("D M d,Y G:i");
     }
 
-    public function getFinalTotal(): double{
+    public function getFinalTotal(): float{
         return $this->total;
     }
 
@@ -19,9 +19,9 @@ class Invoices{
     }
 
     public function generateInvoice(){
-        echo "-----------------------------------";
-        echo "Date: ".$this->orderTime;
-        echo "Total: $".$this->total;
-        echo "-----------------------------------";
+        echo "-----------------------------------\n";
+        echo "Date: ".$this->orderTime."\n";
+        echo "Total: $".$this->total."\n";
+        echo "-----------------------------------\n";
     }
 }
